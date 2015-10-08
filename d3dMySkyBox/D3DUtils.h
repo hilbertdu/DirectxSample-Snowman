@@ -14,146 +14,146 @@
 
 namespace d3d
 {
-	template<class T> void Release(T t)
-	{
-		if( t )
-		{
-			t->Release();
-			t = 0;
-		}
-	}
-		
-	template<class T> void Delete(T t)
-	{
-		if( t )
-		{
-			delete t;
-			t = 0;
-		}
-	}
+    template<class T> void Release(T t)
+    {
+        if (t)
+        {
+            t->Release();
+            t = 0;
+        }
+    }
 
-	template<class T> void Render(T element)
-	{
-		if(element)
-		{
-			element->Render();
-		}
-	}
+    template<class T> void Delete(T t)
+    {
+        if (t)
+        {
+            delete t;
+            t = 0;
+        }
+    }
 
-	// 不同的顶点格式
-	struct TVertex
-	{
-		TVertex(){}
-		TVertex(
-			float x, float y, float z,
-			float u, float v)
-		{
-			_x  = x;  _y  = y;  _z  = z;
-			_u  = u;  _v  = v;
-		}
-		float _x, _y, _z;
-		float _u, _v; // 纹理坐标
+    template<class T> void Render(T element)
+    {
+        if (element)
+        {
+            element->Render();
+        }
+    }
 
-		static const DWORD FVF;
-	};
+    // 不同的顶点格式
+    struct TVertex
+    {
+        TVertex(){}
+        TVertex(
+            float x, float y, float z,
+            float u, float v)
+        {
+            _x = x;  _y = y;  _z = z;
+            _u = u;  _v = v;
+        }
+        float _x, _y, _z;
+        float _u, _v; // 纹理坐标
 
-	struct NTVertex
-	{
-		NTVertex(){}
-		NTVertex(float x, float y, float z, 
-			float nx, float ny, float nz,
-			float u, float v)
-		{
-			_x  = x;  _y  = y;  _z  = z;
-			_nx = nx; _ny = ny; _nz = nz;
-			_u  = u;  _v  = v;
-		}
-		float _x, _y, _z;
-		float _nx, _ny, _nz;
-		float _u, _v;
+        static const DWORD FVF;
+    };
 
-		static const DWORD FVF;
-	};
+    struct NTVertex
+    {
+        NTVertex(){}
+        NTVertex(float x, float y, float z,
+            float nx, float ny, float nz,
+            float u, float v)
+        {
+            _x = x;  _y = y;  _z = z;
+            _nx = nx; _ny = ny; _nz = nz;
+            _u = u;  _v = v;
+        }
+        float _x, _y, _z;
+        float _nx, _ny, _nz;
+        float _u, _v;
 
-	bool DefaultDisplay(float timeDelta);
-	void BeginRender(IDirect3DDevice9* _d3dDevice9);
-	void EndRender(IDirect3DDevice9* _d3dDevice9);
+        static const DWORD FVF;
+    };
 
-	// 颜色
-	const D3DXCOLOR      WHITE( D3DCOLOR_XRGB(255, 255, 255) );
-	const D3DXCOLOR      BLACK( D3DCOLOR_XRGB(  0,   0,   0) );
-	const D3DXCOLOR        RED( D3DCOLOR_XRGB(255,   0,   0) );
-	const D3DXCOLOR      GREEN( D3DCOLOR_XRGB(  0, 255,   0) );
-	const D3DXCOLOR       BLUE( D3DCOLOR_XRGB(  0,   0, 255) );
-	const D3DXCOLOR     YELLOW( D3DCOLOR_XRGB(255, 255,   0) );
-	const D3DXCOLOR       CYAN( D3DCOLOR_XRGB(  0, 255, 255) );
-	const D3DXCOLOR    MAGENTA( D3DCOLOR_XRGB(255,   0, 255) );
-	const D3DXCOLOR    DARK( D3DCOLOR_XRGB(64,   64, 64) );
+    bool DefaultDisplay(float timeDelta);
+    void BeginRender(IDirect3DDevice9* _d3dDevice9);
+    void EndRender(IDirect3DDevice9* _d3dDevice9);
 
-	const D3DXCOLOR BEACH_SAND( D3DCOLOR_XRGB(255, 249, 157) );
-	const D3DXCOLOR DESERT_SAND( D3DCOLOR_XRGB(250, 205, 135) );
+    // 颜色
+    const D3DXCOLOR      WHITE(D3DCOLOR_XRGB(255, 255, 255));
+    const D3DXCOLOR      BLACK(D3DCOLOR_XRGB(0, 0, 0));
+    const D3DXCOLOR        RED(D3DCOLOR_XRGB(255, 0, 0));
+    const D3DXCOLOR      GREEN(D3DCOLOR_XRGB(0, 255, 0));
+    const D3DXCOLOR       BLUE(D3DCOLOR_XRGB(0, 0, 255));
+    const D3DXCOLOR     YELLOW(D3DCOLOR_XRGB(255, 255, 0));
+    const D3DXCOLOR       CYAN(D3DCOLOR_XRGB(0, 255, 255));
+    const D3DXCOLOR    MAGENTA(D3DCOLOR_XRGB(255, 0, 255));
+    const D3DXCOLOR    DARK(D3DCOLOR_XRGB(64, 64, 64));
 
-	const D3DXCOLOR LIGHTGREEN( D3DCOLOR_XRGB( 60, 184, 120) );
-	const D3DXCOLOR  PUREGREEN( D3DCOLOR_XRGB(  0, 166,  81) );
-	const D3DXCOLOR  DARKGREEN( D3DCOLOR_XRGB(  0, 114,  54) );
+    const D3DXCOLOR BEACH_SAND(D3DCOLOR_XRGB(255, 249, 157));
+    const D3DXCOLOR DESERT_SAND(D3DCOLOR_XRGB(250, 205, 135));
 
-	const D3DXCOLOR LIGHT_YELLOW_GREEN( D3DCOLOR_XRGB(124, 197, 118) );
-	const D3DXCOLOR  PURE_YELLOW_GREEN( D3DCOLOR_XRGB( 57, 181,  74) );
-	const D3DXCOLOR  DARK_YELLOW_GREEN( D3DCOLOR_XRGB( 25, 123,  48) );
+    const D3DXCOLOR LIGHTGREEN(D3DCOLOR_XRGB(60, 184, 120));
+    const D3DXCOLOR  PUREGREEN(D3DCOLOR_XRGB(0, 166, 81));
+    const D3DXCOLOR  DARKGREEN(D3DCOLOR_XRGB(0, 114, 54));
 
-	const D3DXCOLOR LIGHTBROWN(D3DCOLOR_XRGB(198, 156, 109));
-	const D3DXCOLOR DARKBROWN( D3DCOLOR_XRGB(115, 100,  87));
+    const D3DXCOLOR LIGHT_YELLOW_GREEN(D3DCOLOR_XRGB(124, 197, 118));
+    const D3DXCOLOR  PURE_YELLOW_GREEN(D3DCOLOR_XRGB(57, 181, 74));
+    const D3DXCOLOR  DARK_YELLOW_GREEN(D3DCOLOR_XRGB(25, 123, 48));
 
-	// 光照
-	D3DLIGHT9 InitDirectionalLight(D3DXVECTOR3* direction, D3DXCOLOR* color);
-	D3DLIGHT9 InitPointLight(D3DXVECTOR3* position, D3DXCOLOR* color);
-	D3DLIGHT9 InitSpotLight(D3DXVECTOR3* position, D3DXVECTOR3* direction, D3DXCOLOR* color);
+    const D3DXCOLOR LIGHTBROWN(D3DCOLOR_XRGB(198, 156, 109));
+    const D3DXCOLOR DARKBROWN(D3DCOLOR_XRGB(115, 100, 87));
 
-	// 材质
-	D3DMATERIAL9 InitMtrl(D3DXCOLOR a, D3DXCOLOR d, D3DXCOLOR s, D3DXCOLOR e, float p);
+    // 光照
+    D3DLIGHT9 InitDirectionalLight(D3DXVECTOR3* direction, D3DXCOLOR* color);
+    D3DLIGHT9 InitPointLight(D3DXVECTOR3* position, D3DXCOLOR* color);
+    D3DLIGHT9 InitSpotLight(D3DXVECTOR3* position, D3DXVECTOR3* direction, D3DXCOLOR* color);
 
-	const D3DMATERIAL9 WHITE_MTRL  = InitMtrl(WHITE, WHITE, WHITE, BLACK, 2.0f);
-	const D3DMATERIAL9 RED_MTRL    = InitMtrl(RED, RED, RED, BLACK, 2.0f);
-	const D3DMATERIAL9 GREEN_MTRL  = InitMtrl(GREEN, GREEN, GREEN, BLACK, 2.0f);
-	const D3DMATERIAL9 BLUE_MTRL   = InitMtrl(BLUE, BLUE, BLUE, BLACK, 2.0f);
-	const D3DMATERIAL9 YELLOW_MTRL = InitMtrl(YELLOW, YELLOW, YELLOW, BLACK, 2.0f);
+    // 材质
+    D3DMATERIAL9 InitMtrl(D3DXCOLOR a, D3DXCOLOR d, D3DXCOLOR s, D3DXCOLOR e, float p);
 
-	// Bounding Objects
-	struct BoundingBox
-	{
-		BoundingBox();
+    const D3DMATERIAL9 WHITE_MTRL = InitMtrl(WHITE, WHITE, WHITE, BLACK, 2.0f);
+    const D3DMATERIAL9 RED_MTRL = InitMtrl(RED, RED, RED, BLACK, 2.0f);
+    const D3DMATERIAL9 GREEN_MTRL = InitMtrl(GREEN, GREEN, GREEN, BLACK, 2.0f);
+    const D3DMATERIAL9 BLUE_MTRL = InitMtrl(BLUE, BLUE, BLUE, BLACK, 2.0f);
+    const D3DMATERIAL9 YELLOW_MTRL = InitMtrl(YELLOW, YELLOW, YELLOW, BLACK, 2.0f);
 
-		bool isPointInside(D3DXVECTOR3& p);
+    // Bounding Objects
+    struct BoundingBox
+    {
+        BoundingBox();
 
-		D3DXVECTOR3 _min;
-		D3DXVECTOR3 _max;
-	};
+        bool isPointInside(D3DXVECTOR3& p);
 
-	struct BoundingSphere
-	{
-		BoundingSphere();
+        D3DXVECTOR3 _min;
+        D3DXVECTOR3 _max;
+    };
 
-		D3DXVECTOR3 _center;
-		float       _radius;
-	};
+    struct BoundingSphere
+    {
+        BoundingSphere();
 
-	// Constants
-	const float INFINITY = FLT_MAX;
-	const float EPSILON  = 0.001f;
+        D3DXVECTOR3 _center;
+        float       _radius;
+    };
 
-	// Randomness
-	// Desc: Return random float in [lowBound, highBound] interval.
-	float GetRandomFloat(float lowBound, float highBound);
-	
-	// Desc: Returns a random vector in the bounds specified by min and max.
-	void GetRandomVector(D3DXVECTOR3* out, D3DXVECTOR3* min, D3DXVECTOR3* max);
+    // Constants
+    // const float INFINITY = FLT_MAX;
+    const float EPSILON = 0.001f;
 
-	// Conversion
-	DWORD FtoDw(float f);
+    // Randomness
+    // Desc: Return random float in [lowBound, highBound] interval.
+    float GetRandomFloat(float lowBound, float highBound);
 
-	// Interpolation
-	float Lerp(float a, float b, float t);
+    // Desc: Returns a random vector in the bounds specified by min and max.
+    void GetRandomVector(D3DXVECTOR3* out, D3DXVECTOR3* min, D3DXVECTOR3* max);
 
-	// 计算法线
-	void ComputeNormal(D3DXVECTOR3* p0, D3DXVECTOR3* p1, D3DXVECTOR3* p2, D3DXVECTOR3* out);
+    // Conversion
+    DWORD FtoDw(float f);
+
+    // Interpolation
+    float Lerp(float a, float b, float t);
+
+    // 计算法线
+    void ComputeNormal(D3DXVECTOR3* p0, D3DXVECTOR3* p1, D3DXVECTOR3* p2, D3DXVECTOR3* out);
 }

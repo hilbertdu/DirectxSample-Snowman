@@ -23,14 +23,14 @@
 class CShadowVolume
 {
 public:
-    HRESULT BuildShadowVolume( LPD3DXMESH pObject, D3DXVECTOR3 vLight );
-	HRESULT Render( LPDIRECT3DDEVICE9 pd3dDevice );
+    HRESULT BuildShadowVolume(LPD3DXMESH pObject, D3DXVECTOR3 vLight);
+    HRESULT Render(LPDIRECT3DDEVICE9 pd3dDevice);
 
-	void    Reset() { m_dwNumVertices = 0L; }
+    void    Reset() { m_dwNumVertices = 0L; }
 
 private:
-	void AddEdge( WORD* pEdges, DWORD& dwNumEdges, WORD v0, WORD v1 );
+    void AddEdge(WORD* pEdges, DWORD& dwNumEdges, WORD v0, WORD v1);
 
-	D3DXVECTOR3 m_pVertices[32000]; // 阴影体的顶点坐标
+    D3DXVECTOR3 m_pVertices[32000]; // 阴影体的顶点坐标
     DWORD       m_dwNumVertices;
 };
